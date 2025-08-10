@@ -27,19 +27,19 @@ mongoose.connect("mongodb+srv://nssharma2000:nama1234@whatsapp.ssz515h.mongodb.n
 
 
 async function processGivenMessages() {
-    const c1_msg1 = await Message.updateOne({ _id: con_1_msg_1.metaData.entry[0].changes[0].value.messages[0].id }, { $set: { wa_id: con_1_msg_1["metaData"]["entry"][0]["changes"][0]["value"]["contacts"][0]["wa_id"],
+    await Message.updateOne({ _id: con_1_msg_1.metaData.entry[0].changes[0].value.messages[0].id }, { $set: { wa_id: con_1_msg_1["metaData"]["entry"][0]["changes"][0]["value"]["contacts"][0]["wa_id"],
       contactName: "Ravi Kumar", content: con_1_msg_1["metaData"]["entry"][0]["changes"][0]["value"]["messages"][0]["text"]["body"], timestamp: con_1_msg_1["metaData"]["entry"][0]["changes"][0]["value"]["messages"][0]["timestamp"],
       conv_id: 1, status: null, sender_wa_id: con_1_msg_1["metaData"]["entry"][0]["changes"][0]["value"]["messages"][0]["from"]}}, { upsert: true });
     
-    const c1_msg2 = await Message.updateOne({ _id: con_1_msg_2.metaData.entry[0].changes[0].value.messages[0].id }, { $set: { wa_id: con_1_msg_2["metaData"]["entry"][0]["changes"][0]["value"]["contacts"][0]["wa_id"],
+    await Message.updateOne({ _id: con_1_msg_2.metaData.entry[0].changes[0].value.messages[0].id }, { $set: { wa_id: con_1_msg_2["metaData"]["entry"][0]["changes"][0]["value"]["contacts"][0]["wa_id"],
         contactName: "Ravi Kumar", content: con_1_msg_2["metaData"]["entry"][0]["changes"][0]["value"]["messages"][0]["text"]["body"], timestamp: con_1_msg_2["metaData"]["entry"][0]["changes"][0]["value"]["messages"][0]["timestamp"],
         conv_id: 1, status: con_1_status_2["metaData"]["entry"][0]["changes"][0]["value"]["statuses"][0]["status"], sender_wa_id: con_1_msg_2["metaData"]["entry"][0]["changes"][0]["value"]["messages"][0]["from"]}}, { upsert: true });
 
-    const c2_msg1 = await Message.updateOne({ _id: con_2_msg_1.metaData.entry[0].changes[0].value.messages[0].id }, { $set: {wa_id: con_2_msg_1["metaData"]["entry"][0]["changes"][0]["value"]["contacts"][0]["wa_id"],
+    await Message.updateOne({ _id: con_2_msg_1.metaData.entry[0].changes[0].value.messages[0].id }, { $set: {wa_id: con_2_msg_1["metaData"]["entry"][0]["changes"][0]["value"]["contacts"][0]["wa_id"],
       contactName: "Neha Joshi", content: con_2_msg_1["metaData"]["entry"][0]["changes"][0]["value"]["messages"][0]["text"]["body"], timestamp: con_2_msg_1["metaData"]["entry"][0]["changes"][0]["value"]["messages"][0]["timestamp"],
       conv_id: 2, status: con_2_status_1["metaData"]["entry"][0]["changes"][0]["value"]["statuses"][0]["status"], sender_wa_id: con_2_msg_1["metaData"]["entry"][0]["changes"][0]["value"]["messages"][0]["from"]}}, { upsert: true });
     
-    const c2_msg2 = await Message.updateOne({ _id: con_2_msg_2.metaData.entry[0].changes[0].value.messages[0].id }, { $set: { wa_id: con_2_msg_2["metaData"]["entry"][0]["changes"][0]["value"]["contacts"][0]["wa_id"],
+    await Message.updateOne({ _id: con_2_msg_2.metaData.entry[0].changes[0].value.messages[0].id }, { $set: { wa_id: con_2_msg_2["metaData"]["entry"][0]["changes"][0]["value"]["contacts"][0]["wa_id"],
         contactName: "Neha Joshi", content: con_2_msg_2["metaData"]["entry"][0]["changes"][0]["value"]["messages"][0]["text"]["body"], timestamp: con_2_msg_2["metaData"]["entry"][0]["changes"][0]["value"]["messages"][0]["timestamp"],
         conv_id: 2, status: con_2_status_2["metaData"]["entry"][0]["changes"][0]["value"]["statuses"][0]["status"], sender_wa_id: con_2_msg_2["metaData"]["entry"][0]["changes"][0]["value"]["messages"][0]["from"]}}, { upsert: true });
 
