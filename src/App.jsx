@@ -104,7 +104,7 @@ function App() {
                               <div className="mx-auto flex flex-col justify-start items-start">
                                 { message.content }
                                 <div className="mx-auto flex justify-end items-end text-xs md:text-sm text-gray-500">
-                                  { `${message.status === null ? "" : String(message.status[0].toUpperCase() +(message.status.substring(1, ))) } ${new Date(parseInt(message.timestamp) * 1000).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}` }
+                                  { `${message.status === null ? "" : String(message.status[0].toUpperCase() +(message.status.substring(1, ))) } ${new Date(message.timestamp).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}` }
                                 </div>
                               </div>
                             </div>
@@ -123,7 +123,7 @@ function App() {
                         wa_id: currentConversation.pNumber,
                         contactName: currentConversation.contactName,
                         content: inputText,
-                        timestamp: new Date().getTime() / 1000,
+                        timestamp: new Date(),
                         conv_id: currentConversation._id,
                         status: "sent",
                         sender_wa_id: currentConversation.pNumber
