@@ -26,7 +26,7 @@ mongoose.connect("mongodb+srv://nssharma2000:nama1234@whatsapp.ssz515h.mongodb.n
 })
 
 
-async function processGivenMessages() {
+function processGivenMessages() {
     Promise.all([
     Message.updateOne({ _id: con_1_msg_1.metaData.entry[0].changes[0].value.messages[0].id }, { $set: { wa_id: con_1_msg_1["metaData"]["entry"][0]["changes"][0]["value"]["contacts"][0]["wa_id"],
       contactName: "Ravi Kumar", content: con_1_msg_1["metaData"]["entry"][0]["changes"][0]["value"]["messages"][0]["text"]["body"], timestamp: con_1_msg_1["metaData"]["entry"][0]["changes"][0]["value"]["messages"][0]["timestamp"],
@@ -54,14 +54,12 @@ async function processGivenMessages() {
     ])          
 }
 
-async function handleProcessGivenMessages()
-{
-    await processGivenMessages()
-}
 
 
 
 app.get("/get_messages", async (req, res) => {
+
+    processGivenMessages()
     
     const convos = await Conversation.find().sort({ _id: 1 })
     const messages = await Message.find().sort({ timestamp: 1 })
@@ -86,5 +84,3 @@ app.post("/send_message", async (req, res) => {
 })
 
 app.listen(3001, () => console.log(`Server running.`));
-
-handleProcessGivenMessages()
