@@ -57,7 +57,7 @@ async function handleProcessGivenMessages()
     await processGivenMessages()
 }
 
-handleProcessGivenMessages()
+
 
 app.get("/get_messages", async (req, res) => {
     
@@ -84,3 +84,5 @@ app.post("/send_message", async (req, res) => {
 })
 
 app.listen(3001, () => console.log(`Server running.`));
+
+handleProcessGivenMessages()
