@@ -27,29 +27,31 @@ mongoose.connect("mongodb+srv://nssharma2000:nama1234@whatsapp.ssz515h.mongodb.n
 
 
 async function processGivenMessages() {
+    Promise.all([
     await Message.updateOne({ _id: con_1_msg_1.metaData.entry[0].changes[0].value.messages[0].id }, { $set: { wa_id: con_1_msg_1["metaData"]["entry"][0]["changes"][0]["value"]["contacts"][0]["wa_id"],
       contactName: "Ravi Kumar", content: con_1_msg_1["metaData"]["entry"][0]["changes"][0]["value"]["messages"][0]["text"]["body"], timestamp: con_1_msg_1["metaData"]["entry"][0]["changes"][0]["value"]["messages"][0]["timestamp"],
-      conv_id: 1, status: null, sender_wa_id: con_1_msg_1["metaData"]["entry"][0]["changes"][0]["value"]["messages"][0]["from"]}}, { upsert: true });
+      conv_id: 1, status: null, sender_wa_id: con_1_msg_1["metaData"]["entry"][0]["changes"][0]["value"]["messages"][0]["from"]}}, { upsert: true }),
     
     await Message.updateOne({ _id: con_1_msg_2.metaData.entry[0].changes[0].value.messages[0].id }, { $set: { wa_id: con_1_msg_2["metaData"]["entry"][0]["changes"][0]["value"]["contacts"][0]["wa_id"],
         contactName: "Ravi Kumar", content: con_1_msg_2["metaData"]["entry"][0]["changes"][0]["value"]["messages"][0]["text"]["body"], timestamp: con_1_msg_2["metaData"]["entry"][0]["changes"][0]["value"]["messages"][0]["timestamp"],
-        conv_id: 1, status: con_1_status_2["metaData"]["entry"][0]["changes"][0]["value"]["statuses"][0]["status"], sender_wa_id: con_1_msg_2["metaData"]["entry"][0]["changes"][0]["value"]["messages"][0]["from"]}}, { upsert: true });
+        conv_id: 1, status: con_1_status_2["metaData"]["entry"][0]["changes"][0]["value"]["statuses"][0]["status"], sender_wa_id: con_1_msg_2["metaData"]["entry"][0]["changes"][0]["value"]["messages"][0]["from"]}}, { upsert: true }),
 
     await Message.updateOne({ _id: con_2_msg_1.metaData.entry[0].changes[0].value.messages[0].id }, { $set: {wa_id: con_2_msg_1["metaData"]["entry"][0]["changes"][0]["value"]["contacts"][0]["wa_id"],
       contactName: "Neha Joshi", content: con_2_msg_1["metaData"]["entry"][0]["changes"][0]["value"]["messages"][0]["text"]["body"], timestamp: con_2_msg_1["metaData"]["entry"][0]["changes"][0]["value"]["messages"][0]["timestamp"],
-      conv_id: 2, status: con_2_status_1["metaData"]["entry"][0]["changes"][0]["value"]["statuses"][0]["status"], sender_wa_id: con_2_msg_1["metaData"]["entry"][0]["changes"][0]["value"]["messages"][0]["from"]}}, { upsert: true });
+      conv_id: 2, status: con_2_status_1["metaData"]["entry"][0]["changes"][0]["value"]["statuses"][0]["status"], sender_wa_id: con_2_msg_1["metaData"]["entry"][0]["changes"][0]["value"]["messages"][0]["from"]}}, { upsert: true }),
     
     await Message.updateOne({ _id: con_2_msg_2.metaData.entry[0].changes[0].value.messages[0].id }, { $set: { wa_id: con_2_msg_2["metaData"]["entry"][0]["changes"][0]["value"]["contacts"][0]["wa_id"],
         contactName: "Neha Joshi", content: con_2_msg_2["metaData"]["entry"][0]["changes"][0]["value"]["messages"][0]["text"]["body"], timestamp: con_2_msg_2["metaData"]["entry"][0]["changes"][0]["value"]["messages"][0]["timestamp"],
-        conv_id: 2, status: con_2_status_2["metaData"]["entry"][0]["changes"][0]["value"]["statuses"][0]["status"], sender_wa_id: con_2_msg_2["metaData"]["entry"][0]["changes"][0]["value"]["messages"][0]["from"]}}, { upsert: true });
+        conv_id: 2, status: con_2_status_2["metaData"]["entry"][0]["changes"][0]["value"]["statuses"][0]["status"], sender_wa_id: con_2_msg_2["metaData"]["entry"][0]["changes"][0]["value"]["messages"][0]["from"]}}, { upsert: true }),
 
     await Conversation.updateOne({ _id: 1 }, { $set : {
         contactName: "Ravi Kumar",
-        pNumber: con_1_msg_1["metaData"]["entry"][0]["changes"][0]["value"]["contacts"][0]["wa_id"] }}, { upsert: true });
+        pNumber: con_1_msg_1["metaData"]["entry"][0]["changes"][0]["value"]["contacts"][0]["wa_id"] }}, { upsert: true }),
     
     await Conversation.updateOne({ _id: 2 }, { $set : {
         contactName: "Neha Joshi",
-        pNumber: con_2_msg_1["metaData"]["entry"][0]["changes"][0]["value"]["contacts"][0]["wa_id"] }}, { upsert: true });           
+        pNumber: con_2_msg_1["metaData"]["entry"][0]["changes"][0]["value"]["contacts"][0]["wa_id"] }}, { upsert: true }), 
+    ])          
 }
 
 async function handleProcessGivenMessages()
